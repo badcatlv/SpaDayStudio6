@@ -16,3 +16,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.square {
+    display: flex;
+}
+
+.blue{
+    height:60px;
+    width:60px;
+    background-color:blue;
+}
+.white {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+}
+.red {
+    height: 60px;
+    width: 60px;
+    background-color: red;
+}
+.pink {
+    height: 60px;
+    width: 60px;
+    background-color: pink;
+}
+.yellow {
+    height: 60px;
+    width: 60px;
+    background-color: yellow;
+}
