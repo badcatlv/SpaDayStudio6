@@ -3,20 +3,40 @@
 *@
 @{
 }
+@if (ViewBag.error != null)
+{
+    <p>@ViewBag.error</p>
+}
 
 <form method="post" action="/user">
     Name:
     <br />
-    <input type="text" name="username" />
+    @if (ViewBag.error == null)
+    {
+        <input type="text" name="username" />
+    }
+    else
+    {
+        <input type="text" name="name" value="@ViewBag.userName"/>
+    }
     <br />
     Email:
     <br />
-    <input type="email" name="email" />
+    @if (ViewBag.error == null)
+    {
+        <input type="email" name="email" />
+    }
+    else
+    {
+        <input type="text" name="name" value="@ViewBag.email" />
+    }    
     <br />
     Password:
     <br />
     <input type="password" name="password" />
     <br />
-    <input type="password" name="password" />
+    Confirm Password:
+    <br />
+    <input type="password" name="verify" />
     <input type="submit" value="Submit" />
 </form>

@@ -3,3 +3,13 @@
 *@
 @{
 }
+<h1>Hello @ViewBag.user.Username</h1>
+<h3>Welcome to The Fancy Spa.</h3>
+<a asp-controller="Spa" asp-action="Index">Our Services</a>
+<footer>
+<div>
+    <h4>@ViewBag.user.Username</h4>
+    <h4>@ViewBag.user.Email</h4>
+    <h5>@ViewBag.user.Date</h5>
+</div>
+</footer>
