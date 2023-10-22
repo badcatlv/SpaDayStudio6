@@ -8,5 +8,11 @@ namespace SpaDay6.Controllers
         {
             return View();
         }
+
+        [Route("/user/add")]
+        public IActionResult Add()
+        {
+            return View();
+        }
     }
 }
