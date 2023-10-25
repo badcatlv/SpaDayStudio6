@@ -5,9 +5,11 @@
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public DateTime Date = DateTime.Now;
+        public DateTime Date { get; }
 
-        public User() { }
+        public User() {
+            Date = DateTime.Now;
+        }
 
         public User(string username, string password, string email)
         {
