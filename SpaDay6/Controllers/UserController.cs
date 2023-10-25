@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpaDay6.Models;
+using SpaDay6.ViewModel;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,26 +16,44 @@ namespace SpaDay6.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            AddUserViewModel vm = new AddUserViewModel();
+            return View(vm);
         }
 
         [HttpPost]
         [Route("/user")]
-        public IActionResult SubmitAddUserForm(User newUser, string verify)
+        public IActionResult SubmitAddUserForm(AddUserViewModel vm)
         {
-            if (newUser.Password == verify)
+            if (ModelState.IsValid && vm.Password == vm.VerifyPassword)
             {
-                ViewBag.user = newUser;
-                return View("Index");
+                User user = new User
+                {
+                    Username = vm.UserName,
+                    Email = vm.Email,
+                    Password = vm.Password,
+                };
+                return View("Index", user);
             }
             else
             {
-                ViewBag.error = "Passwords do not match! Try again!";
-                ViewBag.userName = newUser.Username;
-                ViewBag.eMail = newUser.Email;
+                //User.Username = vm.UserName;
+                //User.Email = vm.Email;                    
                 return View("Add");
             }
         }
+        //if (newUser.Password == verify)
+        //{
+        //    ViewBag.user = newUser;
+        //    return View("Index");
+        //}
+        //else
+        //{
+        //    ViewBag.error = "Passwords do not match! Try again!";
+        //    ViewBag.userName = newUser.Username;
+        //    ViewBag.eMail = newUser.Email;
+        //    return View("Add");
+        //}
     }
 }
+
 
