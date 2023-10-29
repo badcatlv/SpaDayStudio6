@@ -17,29 +17,36 @@ namespace SpaDay6.Controllers
         public IActionResult Add()
         {
             AddUserViewModel vm = new AddUserViewModel();
-            return View(vm);
+            return View("Add", vm);
         }
 
         [HttpPost]
         [Route("/user")]
         public IActionResult SubmitAddUserForm(AddUserViewModel vm)
         {
-            if (ModelState.IsValid && vm.Password == vm.VerifyPassword)
+            if (ModelState.IsValid)
             {
-                User user = new User
+                if (vm.Password == vm.VerifyPassword)
                 {
-                    Username = vm.UserName,
-                    Email = vm.Email,
-                    Password = vm.Password,
-                };
-                return View("Index", user);
+                    User user = new User
+                    {
+                        Username = vm.UserName,
+                        Email = vm.Email,
+                        Password = vm.Password,
+                    };
+                    return View("Index", user);
+                }
+                else
+                {
+                    ViewBag.error = "Passwords do not match.";
+
+                    //User.Username = vm.UserName;
+                    //User.Email = vm.Email;                    
+                    return View("Add", vm);
+                }
             }
-            else
-            {
-                //User.Username = vm.UserName;
-                //User.Email = vm.Email;                    
-                return View("Add");
-            }
+            return View("Add", vm);
+            
         }
         //if (newUser.Password == verify)
         //{

@@ -4,17 +4,20 @@ namespace SpaDay6.ViewModel
 {
     public class AddUserViewModel
     {
-        [Required]
-        [StringLength(15, MinimumLength = 5)]
-        public string UserName { get; set;}
+        [Required(ErrorMessage = "Username is required")]
+        [StringLength(15, MinimumLength = 5, ErrorMessage = "Username must have 5-15 characters")]
+        public string? UserName { get; set;}
+
         [EmailAddress]
-        public string Email { get; set;}
-        [Required]
-        [StringLength(20, MinimumLength = 6)]
-        public string Password { get; set;}
-        [Required]
-        [StringLength(20, MinimumLength = 6)]
-        public string VerifyPassword { get; set;}
+        public string? Email { get; set;}
+
+        [Required(ErrorMessage = "Password Required")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage ="Password must by 6-20 characters")]
+        public string? Password { get; set;}
+
+        [Required(ErrorMessage = "Password Required")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Password must by 6-20 characters")]
+        public string? VerifyPassword { get; set;}
 
     }
 }
