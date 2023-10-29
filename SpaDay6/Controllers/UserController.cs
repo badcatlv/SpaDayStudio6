@@ -26,28 +26,40 @@ namespace SpaDay6.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (vm.Password == vm.VerifyPassword)
+                User user = new User
                 {
-                    User user = new User
-                    {
-                        Username = vm.UserName,
-                        Email = vm.Email,
-                        Password = vm.Password,
-                    };
-                    return View("Index", user);
-                }
-                else
-                {
-                    ViewBag.error = "Passwords do not match.";
-
-                    //User.Username = vm.UserName;
-                    //User.Email = vm.Email;                    
-                    return View("Add", vm);
-                }
+                    Username = vm.UserName,
+                    Email = vm.Email,
+                    Password = vm.Password,
+                };
+                return View("Index", user);
             }
             return View("Add", vm);
-            
         }
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (vm.Password == vm.VerifyPassword)
+        //        {
+        //            User user = new User
+        //            {
+        //                Username = vm.UserName,
+        //                Email = vm.Email,
+        //                Password = vm.Password,
+        //            };
+        //            return View("Index", user);
+        //        }
+        //        else
+        //        {
+        //            ViewBag.error = "Passwords do not match.";
+
+        //            //User.Username = vm.UserName;
+        //            //User.Email = vm.Email;                    
+        //            return View("Add", vm);
+        //        }
+        //    }
+        //    return View("Add", vm);
+
+        //}
         //if (newUser.Password == verify)
         //{
         //    ViewBag.user = newUser;
