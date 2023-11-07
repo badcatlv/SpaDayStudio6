@@ -50,6 +50,7 @@ namespace SpaDay6.Controllers
         //        }
         //        else
         //        {
+        //modelstate.addmodelerror look up can compare passwords outside the model
         //            ViewBag.error = "Passwords do not match.";
 
         //            //User.Username = vm.UserName;

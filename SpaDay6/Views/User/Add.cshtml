@@ -10,6 +10,8 @@
     <p>@ViewBag.error</p>
 } *@
 
+<span asp-validation-summary="All"></span>
+
 <form method="post" action="/user">
     <div class="form-group">
         <label asp-for="UserName">User Name</label>
@@ -31,7 +33,8 @@
         <input type="password" asp-for="VerifyPassword" />
         <span asp-validation-for="VerifyPassword"></span>
     </div>
-    
+    <input type='submit' value='Submit'>
+</form>
 
 @*     Username:
     <br>
@@ -63,5 +66,4 @@
     <br>
     <input type="password" name="verify" />
     <br> *@
-    <input type='submit' value='Submit'>
-</form>
+    
